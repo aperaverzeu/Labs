@@ -1,0 +1,20 @@
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.csprojAssemblyReference.cache
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.AssemblyInfoInputs.cache
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.AssemblyInfo.cs
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.deps.json
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.runtimeconfig.json
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.runtimeconfig.dev.json
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.dll
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.pdb
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.dll
+/Users/Alex/Documents/Education/Labs/secterm/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.pdb
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.deps.json
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.runtimeconfig.json
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.runtimeconfig.dev.json
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.dll
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/bin/Debug/netcoreapp2.1/Backpack.pdb
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.csprojAssemblyReference.cache
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.AssemblyInfoInputs.cache
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.AssemblyInfo.cs
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.dll
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/first/Backpack/Backpack/obj/Debug/netcoreapp2.1/Backpack.pdb
