@@ -1,0 +1,23 @@
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.exe
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.deps.json
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.runtimeconfig.json
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.runtimeconfig.dev.json
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.dll
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.pdb
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.csprojAssemblyReference.cache
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.csproj.CoreCompileInputs.cache
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.AssemblyInfoInputs.cache
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.AssemblyInfo.cs
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.dll
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.pdb
+C:/Users/paste/source/repos/лабы/не мое, вот и/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.genruntimeconfig.cache
+/Users/Alex/Desktop/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.deps.json
+/Users/Alex/Desktop/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.runtimeconfig.json
+/Users/Alex/Desktop/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.runtimeconfig.dev.json
+/Users/Alex/Desktop/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.dll
+/Users/Alex/Desktop/SeventhLab/SeventhLab/bin/Debug/netcoreapp3.1/SeventhLab.pdb
+/Users/Alex/Desktop/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.csprojAssemblyReference.cache
+/Users/Alex/Desktop/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.AssemblyInfoInputs.cache
+/Users/Alex/Desktop/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.AssemblyInfo.cs
+/Users/Alex/Desktop/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.dll
+/Users/Alex/Desktop/SeventhLab/SeventhLab/obj/Debug/netcoreapp3.1/SeventhLab.pdb
