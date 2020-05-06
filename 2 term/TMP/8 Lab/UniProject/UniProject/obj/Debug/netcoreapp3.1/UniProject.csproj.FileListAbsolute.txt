@@ -1,0 +1,3 @@
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/eight/UniProject/UniProject/obj/Debug/netcoreapp3.1/UniProject.csprojAssemblyReference.cache
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/eight/UniProject/UniProject/obj/Debug/netcoreapp3.1/UniProject.AssemblyInfoInputs.cache
+/Users/Alex/Documents/Education/Labs/2 term/ИСП/eight/UniProject/UniProject/obj/Debug/netcoreapp3.1/UniProject.AssemblyInfo.cs
