@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniProject", "UniProject\UniProject.csproj", "{E86673E2-2BE9-4010-A55D-A2ABECE662EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E86673E2-2BE9-4010-A55D-A2ABECE662EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E86673E2-2BE9-4010-A55D-A2ABECE662EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E86673E2-2BE9-4010-A55D-A2ABECE662EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E86673E2-2BE9-4010-A55D-A2ABECE662EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
