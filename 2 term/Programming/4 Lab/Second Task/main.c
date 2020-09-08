@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "MyString.h"
+#include "string.h"
 
 bool issame(string x, string y){
     if (length(&x) != length(&y)) return false;

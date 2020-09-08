@@ -3,4 +3,4 @@ project(secondCLion C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(secondCLion main.c MyString.c MyString.h)
+add_executable(secondCLion main.c string.c string.h)
