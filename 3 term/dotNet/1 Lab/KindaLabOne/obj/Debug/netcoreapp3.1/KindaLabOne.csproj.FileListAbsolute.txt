@@ -1,0 +1,12 @@
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/bin/Debug/netcoreapp3.1/KindaLabOne.deps.json
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/bin/Debug/netcoreapp3.1/KindaLabOne.runtimeconfig.json
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/bin/Debug/netcoreapp3.1/KindaLabOne.runtimeconfig.dev.json
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/bin/Debug/netcoreapp3.1/KindaLabOne.dll
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/bin/Debug/netcoreapp3.1/KindaLabOne.pdb
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/obj/Debug/netcoreapp3.1/KindaLabOne.csprojAssemblyReference.cache
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/obj/Debug/netcoreapp3.1/KindaLabOne.AssemblyInfoInputs.cache
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/obj/Debug/netcoreapp3.1/KindaLabOne.AssemblyInfo.cs
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/obj/Debug/netcoreapp3.1/KindaLabOne.csproj.CoreCompileInputs.cache
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/obj/Debug/netcoreapp3.1/KindaLabOne.dll
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/obj/Debug/netcoreapp3.1/KindaLabOne.pdb
+/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/KindaLabOne/KindaLabOne/obj/Debug/netcoreapp3.1/KindaLabOne.genruntimeconfig.cache
