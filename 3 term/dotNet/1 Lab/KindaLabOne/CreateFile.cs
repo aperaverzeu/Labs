@@ -18,15 +18,11 @@ namespace KindaLabOne
             {
                 if (!File.Exists(_path))
                 {
-                    // Create a file to write to.
-                    using var sw = File.CreateText(_path);
-                    sw.WriteLine("Hello");
-                    sw.WriteLine("And");
-                    sw.WriteLine("Welcome");
-                    Console.WriteLine("Hej!");
+                    using var writer = File.CreateText(_path);
+                    Console.WriteLine("Alright slappers!");
                 }
                 else
-                    Console.WriteLine("Sorry, file with this name is already exists");
+                    Console.WriteLine("Sorry, we're couldn't create this file");
             }
             catch (Exception e)
             {

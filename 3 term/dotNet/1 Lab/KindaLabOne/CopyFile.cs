@@ -3,13 +3,15 @@ using System.IO;
 
 namespace KindaLabOne
 {
-    public class InfoFile : ICommand
+    public class CopyFile : ICommand
     {
         private readonly string _path;
+        private readonly string _newPath;
 
-        public InfoFile(string path)
+        public CopyFile(string path, string newPath)
         {
             _path = path;
+            _newPath = newPath;
         }
 
         public void Execute()
@@ -19,12 +21,10 @@ namespace KindaLabOne
                 var fileInformation = new FileInfo(_path);
                 if (fileInformation.Exists)
                 {
-                    Console.WriteLine("File name: {0}", fileInformation.Name);
-                    Console.WriteLine("Čas utvareńnia: {0}", fileInformation.CreationTime);
-                    Console.WriteLine("Size: {0} byte(s)", fileInformation.Length);
+                    fileInformation.CopyTo(_newPath, true);
                 }
                 else
-                    Console.WriteLine("Sorry, we're missing some info 'bout this file cuz it doesn't exist");
+                    Console.WriteLine("Sorry, we're couldn't copy this file cuz it doesn't exist");
             }
             catch (Exception e)
             {

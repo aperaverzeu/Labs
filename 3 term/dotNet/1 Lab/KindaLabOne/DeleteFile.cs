@@ -3,11 +3,11 @@ using System.IO;
 
 namespace KindaLabOne
 {
-    public class InfoFile : ICommand
-    {
+    public class DeleteFile : ICommand
+    { 
         private readonly string _path;
 
-        public InfoFile(string path)
+        public DeleteFile(string path)
         {
             _path = path;
         }
@@ -19,12 +19,10 @@ namespace KindaLabOne
                 var fileInformation = new FileInfo(_path);
                 if (fileInformation.Exists)
                 {
-                    Console.WriteLine("File name: {0}", fileInformation.Name);
-                    Console.WriteLine("Čas utvareńnia: {0}", fileInformation.CreationTime);
-                    Console.WriteLine("Size: {0} byte(s)", fileInformation.Length);
+                    fileInformation.Delete();
                 }
                 else
-                    Console.WriteLine("Sorry, we're missing some info 'bout this file cuz it doesn't exist");
+                    Console.WriteLine("Sorry, we're couldn't delete this file cuz it doesn't exist");
             }
             catch (Exception e)
             {
