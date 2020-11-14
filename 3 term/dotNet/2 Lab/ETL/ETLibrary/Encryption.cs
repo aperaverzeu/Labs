@@ -19,16 +19,6 @@ namespace ETLibrary
 
         public static string Encrypt(object obj, byte[] key)
         {
-            // var json = JsonConvert.SerializeObject(obj);
-            // using var aes = Aes.Create();
-            // var encryptor = aes?.CreateEncryptor(key, new byte[16]);
-            // using var memoryStream = new MemoryStream();
-            // using var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
-            // using var streamWriter = new StreamWriter(cryptoStream);
-            // streamWriter.Write(json);
-            // var res = Convert.ToBase64String(memoryStream.ToArray());
-            // return res;
-
             using (var aes = Aes.Create())
             {
                 var cryptoTransform = aes?.CreateEncryptor(key, new byte[16]);
@@ -49,14 +39,6 @@ namespace ETLibrary
 
         public static string Decrypt(string input, byte[] key)
         {
-            // using var aes = Aes.Create();
-            // var encryptor = aes?.CreateDecryptor(key, new byte[16]);
-            // using var memoryStream = new MemoryStream(Convert.FromBase64String(input));
-            // using var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Read);
-            // using var streamReader = new StreamReader(cryptoStream);
-            // var decryptedJson = streamReader.ReadToEnd();
-            // return JsonConvert.DeserializeObject<T>(decryptedJson);
-
             using (var aes = Aes.Create())
             {
                 var cryptoTransform = aes?.CreateDecryptor(key, new byte[16]);
