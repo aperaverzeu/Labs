@@ -71,18 +71,7 @@ namespace ETLibrary
         
         private static void AwaitForTheFileToClose(string path)
         {
-            while (true)
-            {
-                try
-                {
-                    using var stream = new FileStream(path, FileMode.Open);
-                    return;
-                }
-                catch
-                {
-                    Console.WriteLine("Error!");
-                }
-            }
+            while (true) { try { using var stream = new FileStream(path, FileMode.Open); return; } catch { Console.WriteLine("Error!"); } }
         }
     }
 }
