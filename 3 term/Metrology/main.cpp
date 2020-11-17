@@ -7,7 +7,6 @@
 #include <utility>
 #include <vector>
 
-// unused random generator
 struct GaussGenerator {
     GaussGenerator(double mean, double stddev, std::uint32_t seed)
     : engine_(seed), distribution_(mean, stddev) {}
