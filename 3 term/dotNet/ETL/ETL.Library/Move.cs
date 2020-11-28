@@ -86,7 +86,6 @@ namespace ETL.Library
             {
                 Logger.Log("Unable to create Note in Db -– " + exception.Message);
             }
-            
         }
 
         private static void CreateUniquePath(ref string path)
