@@ -1,6 +1,8 @@
 # ETL
 
-ETL is a service that monitors some FTP-server and move files from one site to another. Moving with encryption, compression and saving all the info in database
+ETL is a service that monitors some FTP-server and move files from one site to another. 
+
+Moving with encryption, compression and saving all the info in database
 
 ## Installation
 
