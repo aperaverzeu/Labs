@@ -1,10 +1,10 @@
 namespace ETL.Options
 {
     public class EtlJsonOptions : EtlOptions
-    { 
-        EtlJsonOptions(string json) : base()
+    {
+        public EtlJsonOptions(string json) : base()
         {
-            // ToDo options = Deserialize Json
+            var options = Converter.DeserializeJson<EtlOptions>(json);
             ArchiveOptions = options.ArchiveOptions;
             EncryptionOptions = options.EncryptionOptions;
             LoggingOptions = options.LoggingOptions;

@@ -2,9 +2,9 @@ namespace ETL.Options
 {
     public class EtlXmlOptions : EtlOptions
     {
-        EtlXmlOptions(string xml) : base()
+        public EtlXmlOptions(string xml) : base()
         {
-            // ToDo options = Deserialize Xml
+            var options = Converter.DeserializeXml<EtlOptions>(xml);
             ArchiveOptions = options.ArchiveOptions;
             EncryptionOptions = options.EncryptionOptions;
             LoggingOptions = options.LoggingOptions;
