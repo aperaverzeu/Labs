@@ -5,8 +5,8 @@ namespace ETL.Db
     public class NoteContext : DbContext
     {
         public DbSet<Note> Notes { get; set; }
-        
-        private readonly string _connectionString;
+
+        public string _connectionString;
         
         public NoteContext(string connectionString)
         {
