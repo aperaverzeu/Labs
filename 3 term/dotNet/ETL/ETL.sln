@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETL.Library", "ETL.Library\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETL.Db", "ETL.Db\ETL.Db.csproj", "{6583D55F-8DB3-4E0F-82C2-4EAF8F38D252}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETL.Options", "ETL.Options\ETL.Options.csproj", "{F792B7FF-3FA0-4EE1-8215-DEEA043C7547}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{6583D55F-8DB3-4E0F-82C2-4EAF8F38D252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6583D55F-8DB3-4E0F-82C2-4EAF8F38D252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6583D55F-8DB3-4E0F-82C2-4EAF8F38D252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F792B7FF-3FA0-4EE1-8215-DEEA043C7547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F792B7FF-3FA0-4EE1-8215-DEEA043C7547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F792B7FF-3FA0-4EE1-8215-DEEA043C7547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F792B7FF-3FA0-4EE1-8215-DEEA043C7547}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
