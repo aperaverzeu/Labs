@@ -14,20 +14,20 @@ namespace ETL.Library
             _options = options;
             try
             {
-                var name = _options.LogPath.Split('/').Last();
-                var path = _options.LogPath.Substring(0, options.LogPath.Length - name.Length);
+                var name = options.LogPath.Split('/').Last();
+                var path = options.LogPath.Substring(0, options.LogPath.Length - name.Length);
                 if(!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
-                if(!File.Exists(_options.LogPath))
+                if(!File.Exists(options.LogPath))
                 {
-                    File.Create(_options.LogPath).Close();
+                    File.Create(options.LogPath).Close();
                 }
             }
             catch
             {
-                _options.EnableLogging = false;
+                options.EnableLogging = false;
             }
         }
         

@@ -29,7 +29,7 @@ namespace ETL.Library
 
         private void Configuration()
         {
-            var configs = AppDomain.CurrentDomain.BaseDirectory;
+            const string configs = "ETL/Configs";
             _optionManager = new OptionManager(configs);
             var options = _optionManager.GetOptions<EtlOptions>() as EtlOptions;
             if (options == null)
@@ -105,7 +105,7 @@ namespace ETL.Library
             }
             try
             {
-                clientDirectory = options.MoveOptions.TargetDirectory + $"/{file.LastWriteTime:yyyy-MM-dd}";
+                clientDirectory = options.MoveOptions.TargetDirectory + $"/source/{file.LastWriteTime:yyyy-MM-dd}";
                 _logger.Log("Created client directory!");
             }
             catch (Exception e)
