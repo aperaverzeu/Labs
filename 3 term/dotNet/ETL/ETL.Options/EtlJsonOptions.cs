@@ -11,8 +11,7 @@ namespace ETL.Options
             MoveOptions = options.MoveOptions;
             MoveDbOptions = options.MoveDbOptions;
             WatcherOptions = options.WatcherOptions;
-            // ToDo create Validator
-            // Report = Validator.Validate(this);
+            Report = Validator.Validate(this);
         }
     }
 }
