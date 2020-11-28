@@ -1,9 +1,0 @@
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/bin/Debug/netcoreapp3.1/ETLibrary.deps.json
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/bin/Debug/netcoreapp3.1/ETLibrary.dll
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/bin/Debug/netcoreapp3.1/ETLibrary.pdb
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/obj/Debug/netcoreapp3.1/ETLibrary.csprojAssemblyReference.cache
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/obj/Debug/netcoreapp3.1/ETLibrary.AssemblyInfoInputs.cache
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/obj/Debug/netcoreapp3.1/ETLibrary.AssemblyInfo.cs
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/obj/Debug/netcoreapp3.1/ETLibrary.csproj.CoreCompileInputs.cache
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/obj/Debug/netcoreapp3.1/ETLibrary.dll
-/Users/alex/Documents/Adukacyja/CSharp edu/dotNetEdu/ETL/ETLibrary/obj/Debug/netcoreapp3.1/ETLibrary.pdb
