@@ -24,7 +24,7 @@ namespace ETL.Library
             _logger.Log("Run application\t");
             Console.WriteLine("Press any key to finish...");
             Console.ReadKey(true);
-            _logger.Log("Stop application\n");
+            _logger.Log("Stop application\n\n");
         }
 
         private void Configuration()
@@ -106,7 +106,7 @@ namespace ETL.Library
             try
             {
                 clientDirectory = options.MoveOptions.TargetDirectory + $"/source/{file.LastWriteTime:yyyy-MM-dd}";
-                _logger.Log("Created client directory!");
+                _logger.Log("Created client directory");
             }
             catch (Exception e)
             {
@@ -115,7 +115,7 @@ namespace ETL.Library
             try
             {
                 archiveDirectory = options.MoveOptions.ArchiveDirectory;
-                _logger.Log("Created archive directory!");
+                _logger.Log("Created archive directory");
             }
             catch (Exception e)
             {
@@ -124,7 +124,7 @@ namespace ETL.Library
             try
             {
                 newFilePath = Path.Combine(clientDirectory, $"{Path.GetFileNameWithoutExtension(file.Name)}_{file.CreationTime:yyyy_MM_dd_hh-mm-ss}");
-                _logger.Log("Create new file path!");
+                _logger.Log("Create new file path");
             }
             catch (Exception e)
             {
@@ -133,7 +133,7 @@ namespace ETL.Library
             try
             {
                 newArchivePath= Path.Combine(archiveDirectory, $"{Path.GetFileNameWithoutExtension(file.Name)}_{file.CreationTime:yyyy_MM_dd_hh-mm-ss}");
-                _logger.Log("Create new file path for archive!");
+                _logger.Log("Create new file path for archive");
             }
             catch (Exception e)
             {
@@ -151,7 +151,7 @@ namespace ETL.Library
             try
             {
                 File.WriteAllText(file.FullName, Encryption.Encrypt(File.ReadAllText(file.FullName), key));
-                _logger.Log($"File {file.FullName} encrypted!");
+                _logger.Log($"File {file.Name} encrypted");
             }
             catch (Exception e)
             {
@@ -178,7 +178,7 @@ namespace ETL.Library
             try
             {
                 Archive.Compress(file.FullName, newFilePath, options.ArchiveOptions.CompressionLevel);
-                _logger.Log($"File {file.FullName} compressed!");
+                _logger.Log($"File {file.Name} compressed");
             }
             catch (Exception e)
             {
@@ -187,7 +187,7 @@ namespace ETL.Library
             try
             {
                 Archive.Compress(file.FullName, newArchivePath, options.ArchiveOptions.CompressionLevel);
-                _logger.Log($"File {file.FullName} compressed!");
+                _logger.Log($"File {file.Name} compressed to archive");
             }
             catch (Exception e)
             {
@@ -196,7 +196,7 @@ namespace ETL.Library
             try
             {
                 Archive.Decompress(newFilePath, Path.ChangeExtension(newFilePath, "txt"));
-                _logger.Log($"File {file.FullName} decompressed!");
+                _logger.Log($"File {file.Name} decompressed");
             }
             catch (Exception e)
             {
@@ -209,7 +209,7 @@ namespace ETL.Library
             try
             {
                 text = Encryption.Decrypt(File.ReadAllText(newFilePath), key);
-                _logger.Log($"File {file.FullName} encrypted!");
+                _logger.Log($"File {file.Name} encrypted!");
             }
             catch (Exception e)
             {
@@ -227,6 +227,7 @@ namespace ETL.Library
             try
             { 
                 MoveDb.CreateNote(MoveDb.GenerateId(), file.CreationTime.ToString(CultureInfo.InvariantCulture), text);
+                _logger.Log($"Create Note in Db from {file.Name}");
             }
             catch (Exception exception)
             {
