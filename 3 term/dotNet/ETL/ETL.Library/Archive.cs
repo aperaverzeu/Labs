@@ -5,11 +5,11 @@ namespace ETL.Library
 {
     public static class Archive
     {
-        public static void Compress(string source, string target)
+        public static void Compress(string source, string target, CompressionLevel level)
         {
             using var sourceStream = new FileStream(source, FileMode.Open);
             using var targetStream = File.Create(target);
-            using var zipStream = new GZipStream(targetStream, CompressionLevel.Optimal);
+            using var zipStream = new GZipStream(targetStream, level);
             sourceStream.CopyTo(zipStream);
         }
         

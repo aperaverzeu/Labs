@@ -1,42 +1,41 @@
 using System;
 using System.IO;
 using System.Linq;
+using ETL.Options;
 
 namespace ETL.Library
 {
     public class Logger
     {
-        private readonly bool _enableLogging;
-        private readonly string _logPath;
+        private readonly LoggingOptions _options;
         
-        public Logger(string logPath, bool enableLogging)
+        public Logger(LoggingOptions options)
         {
-            _logPath = logPath;
-            _enableLogging = enableLogging;
+            _options = options;
             try
             {
-                var name = _logPath.Split('/').Last();
-                var path = _logPath.Substring(0, logPath.Length - name.Length);
+                var name = _options.LogPath.Split('/').Last();
+                var path = _options.LogPath.Substring(0, options.LogPath.Length - name.Length);
                 if(!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
-                if(!File.Exists(_logPath))
+                if(!File.Exists(_options.LogPath))
                 {
-                    File.Create(_logPath).Close();
+                    File.Create(_options.LogPath).Close();
                 }
             }
             catch
             {
-                _enableLogging = false;
+                _options.EnableLogging = false;
             }
         }
         
         public void Log(string message)
         {
-            if (_enableLogging)
+            if (_options.EnableLogging)
             {
-                using var log = new StreamWriter(_logPath, true);
+                using var log = new StreamWriter(_options.LogPath, true);
                 log.WriteLine($"[{DateTime.Now:hh:mm:ss dd.MM.yyyy}] - {message}");
             }
         }
