@@ -6,7 +6,7 @@ namespace ETL
     {
         private static void Main(string[] args)
         {
-            var move = new Move("/Users/alex/Desktop/folder/source", "/Users/alex/Desktop/folder/target");
+            var move = new Move();
             move.Run();
         }
     }
