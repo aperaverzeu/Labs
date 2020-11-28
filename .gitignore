@@ -1,13 +1,6 @@
 
 .DS_Store
-3 term/dotNet/ETL/.idea/.idea.ETL/.idea/codeStyles/codeStyleConfig.xml
-3 term/dotNet/ETL/.idea/.idea.ETL/.idea/contentModel.xml
-3 term/dotNet/ETL/.idea/.idea.ETL/.idea/indexLayout.xml
-3 term/dotNet/ETL/.idea/.idea.ETL/.idea/modules.xml
-3 term/dotNet/ETL/.idea/.idea.ETL/.idea/projectSettingsUpdater.xml
-3 term/dotNet/ETL/.idea/.idea.ETL/.idea/vcs.xml
-3 term/dotNet/ETL/.idea/.idea.ETL/.idea/workspace.xml
-3 term/dotNet/ETL/.idea/.idea.ETL/riderModule.iml
+.idea
 3 term/dotNet/ETL/ETL/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
 3 term/dotNet/ETL/ETL/obj/Debug/netcoreapp3.1/ETL.AssemblyInfo.cs
 3 term/dotNet/ETL/ETL/obj/ETL.csproj.nuget.dgspec.json
