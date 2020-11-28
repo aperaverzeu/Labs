@@ -4,4 +4,4 @@
 
 Implementing extract component.
 
-click on [link](https://drive.google.com/file/d/1xYuYukrgbSi3zHsg7EpEH0uF9wfQsdf9/view?usp=sharing) to watch a video
+Using Db as feature. MS-SQL Server via Docker
