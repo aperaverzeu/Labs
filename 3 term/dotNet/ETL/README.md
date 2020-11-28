@@ -1,8 +1,8 @@
 # ETL
 
-ETL is a service that monitors some FTP-server and move files from one site to another. 
+ETL is a service that monitors some FTP-server and moves files from one site to another. 
 
-Moving with encryption, compression and saving all the info in database
+Moving with encryption, compression and saving all the info in database.
 
 ## Installation
 
@@ -30,11 +30,11 @@ sudo docker run -e 'SERVER_NAME' -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrongPa
 |-------------------------------------------|-----------|
 |-e 'SERVER_NAME'                           |MS-SQL Server name of your server             
 |-e "ACCEPT_EULA=Y"                         |Set the ACCEPT_EULA variable to any value to confirm your acceptance of the [End-User Licensing Agreement](https://go.microsoft.com/fwlink/?LinkId=746388). Required setting for the SQL Server image.           |
-|'SA_PASSWORD=yourStrongPassword'    |Specify your own strong password that is at least 8 characters and meets the [SQL Server password requirements](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15). Required setting for the SQL Server image.           |
+|'SA_PASSWORD=yourStrongPassword'           |Specify your own strong password that is at least 8 characters and meets the [SQL Server password requirements](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15). Required setting for the SQL Server image.           |
 |-p 1433:1433                               |Map a TCP port on the host environment (first value) with a TCP port in the container (second value). In this example, SQL Server is listening on TCP 1433 in the container and this is exposed to the port, 1433, on the host.           |
 |--name sql1                                |Specify a custom name for the container rather than a randomly generated one. If you run more than one container, you cannot reuse this same name.           |
 |-h sql1                                    |Used to explicitly set the container hostname, if you don't specify it, it defaults to the container ID which is a randomly generated system GUID.           |
-|mcr.microsoft.com/mssql/server:2019-latest |The SQL Server 2019 Ubuntu Linux container image.           |
+|microsoft.com/mssql-server-linux           |The SQL Server 2019 Ubuntu Linux container image.           |
 
 To view your Docker containers, use the docker ps command:
 ```bash
@@ -60,9 +60,9 @@ If successful, you should get to a sqlcmd command prompt: 1>.
 
 You need .Net Runtime and SDK to be [installed](https://dotnet.microsoft.com/download).
 
-Create an executable .Net Core solution. 
+Create an executable console .Net Core application. 
 
-Create some projects and add to the project with DbContext EntityFramework Core packages:
+Create some projects and add to the project with DbContext EntityFrameworkCore packages:
 - Microsoft.EntityFrameworkCore
 - Microsoft.EntityFrameworkCore.SqlServer
 - System.Data.SqlClient
