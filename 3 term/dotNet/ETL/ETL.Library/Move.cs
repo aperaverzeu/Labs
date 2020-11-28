@@ -1,5 +1,8 @@
 using System;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
+using ETL.Db;
 
 namespace ETL.Library
 {
@@ -9,6 +12,15 @@ namespace ETL.Library
         private static string _target;
         private FileSystemWatcher _watcher;
         private static readonly Logger Logger = new Logger("/Users/alex/Desktop/folder/target/logWithoutDb.txt", true);
+        private static readonly SqlConnectionStringBuilder Builder = new SqlConnectionStringBuilder
+        {
+            DataSource = "localhost",
+            UserID = "sa",
+            Password = "StrongAdminPa55word",
+            InitialCatalog = "EFSampleDB3"
+        };
+        private static readonly NoteContext Context = new NoteContext(Builder.ConnectionString);
+        private static readonly MoveDb MoveDb = new MoveDb(Context);
 
         public Move(string source, string target)
         {
@@ -18,6 +30,8 @@ namespace ETL.Library
         
         public void Run()
         {
+            
+
             _watcher = new FileSystemWatcher(_source)
             {
                 Filter = "*.txt",
@@ -30,7 +44,7 @@ namespace ETL.Library
             Logger.Log("Run application\t");
             Console.WriteLine("Press any key to finish...");
             Console.ReadKey(true);
-            Logger.Log("Stop application\t");
+            Logger.Log("Stop application\n");
         }
 
         private static void OnCreated(object sender, FileSystemEventArgs e)
@@ -64,6 +78,15 @@ namespace ETL.Library
             Logger.Log("File decrypted!");
             File.WriteAllText(newFilePath, text);
             Logger.Log("File goes right!");
+            try
+            { 
+                MoveDb.CreateNote(MoveDb.GenerateId(), file.CreationTime.ToString(CultureInfo.InvariantCulture), text);
+            }
+            catch (Exception exception)
+            {
+                Logger.Log("Unable to create Note in Db -– " + exception.Message);
+            }
+            
         }
 
         private static void CreateUniquePath(ref string path)
