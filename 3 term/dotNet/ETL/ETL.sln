@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETL", "ETL\ETL.csproj", "{99B29DF5-1CDA-422B-95CA-937D1ACE8869}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETL.Library", "ETL.Library\ETL.Library.csproj", "{A1AB45D2-B74B-4F9D-9206-93C9ED9D2E04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{99B29DF5-1CDA-422B-95CA-937D1ACE8869}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99B29DF5-1CDA-422B-95CA-937D1ACE8869}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99B29DF5-1CDA-422B-95CA-937D1ACE8869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AB45D2-B74B-4F9D-9206-93C9ED9D2E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AB45D2-B74B-4F9D-9206-93C9ED9D2E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AB45D2-B74B-4F9D-9206-93C9ED9D2E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AB45D2-B74B-4F9D-9206-93C9ED9D2E04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

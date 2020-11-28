@@ -5,4 +5,8 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ETL.Library\ETL.Library.csproj" />
+    </ItemGroup>
+
 </Project>

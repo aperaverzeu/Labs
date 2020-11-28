@@ -1,12 +1,13 @@
-﻿using System;
+﻿using ETL.Library;
 
 namespace ETL
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var move = new Move("/Users/alex/Desktop/folder/source", "/Users/alex/Desktop/folder/target");
+            move.Run();
         }
     }
 }
