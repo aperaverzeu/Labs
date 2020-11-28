@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ETL.Options
 {
-    public class Validator
+    public static class Validator
     {
         public static string Validate(EtlOptions options)
         {
