@@ -32,8 +32,8 @@ sudo docker run -e 'SERVER_NAME' -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrongPa
 |-e "ACCEPT_EULA=Y"                         |Set the ACCEPT_EULA variable to any value to confirm your acceptance of the [End-User Licensing Agreement](https://go.microsoft.com/fwlink/?LinkId=746388). Required setting for the SQL Server image.           |
 |'SA_PASSWORD=yourStrongPassword'           |Specify your own strong password that is at least 8 characters and meets the [SQL Server password requirements](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15). Required setting for the SQL Server image.           |
 |-p 1433:1433                               |Map a TCP port on the host environment (first value) with a TCP port in the container (second value). In this example, SQL Server is listening on TCP 1433 in the container and this is exposed to the port, 1433, on the host.           |
-|--name sql1                                |Specify a custom name for the container rather than a randomly generated one. If you run more than one container, you cannot reuse this same name.           |
-|-h sql1                                    |Used to explicitly set the container hostname, if you don't specify it, it defaults to the container ID which is a randomly generated system GUID.           |
+|--name sql1                                |Specify a custom name for the container rather than a randomly generated one. If you run more than one container, you cannot reuse this same name.                |
+|-h sql1                                    |Used to explicitly set the container hostname, if you don't specify it, it defaults to the container ID which is a randomly generated system GUID.             |
 |microsoft.com/mssql-server-linux           |The SQL Server 2019 Ubuntu Linux container image.           |
 
 To view your Docker containers, use the docker ps command:
@@ -96,6 +96,8 @@ namespace YourNamespace
 And define context and connection string : usage example
 
 ```c#
+namespace YourNamespace
+{
     // Build connection string
     SqlConnectionStringBuilder Builder = new SqlConnectionStringBuilder() 
     {
@@ -108,37 +110,43 @@ And define context and connection string : usage example
      // Define context & etc.
      YourContext Context = new YourContext(Builder.ConnectionString);
      MoveDb moveToDbClass = new MoveDb(Context);
+}
 ```
 
 Then create additional functionality: Archive, Encryption and others and create {0}Options classes for them.
 
 ```c#
-public static class Archive
+namespace YourNamespace
 {
-    public static void Compress(string source, string target, CompressionLevel level)
-    {
-       using var sourceStream = new FileStream(source, FileMode.Open);
-       using var targetStream = File.Create(target
-       using var zipStream = new GZipStream(targetStream, level);
-       sourceStream.CopyTo(zipStream);
-    }
-        
-    public static void Decompress(string source, string target)
-    {
-       using var sourceStream = new FileStream(source, FileMode.OpenOrCreate);
-       using var targetStream = File.Create(target);
-       using var zipStream = new GZipStream(sourceStream, CompressionMode.Decompress);
-       zipStream.CopyTo(targetStream);
-    }
-}
+   public static class Archive
+   {
+      public static void Compress(string source, string target, CompressionLevel level)
+      {
+         using var sourceStream = new FileStream(source, FileMode.Open);
+         using var targetStream = File.Create(target
+         using var zipStream = new GZipStream(targetStream, level);
+         sourceStream.CopyTo(zipStream);
+      }
+       
+      public static void Decompress(string source, string target)
+      {
+         using var sourceStream = new FileStream(source, FileMode.OpenOrCreate);
+         using var targetStream = File.Create(target);
+         using var zipStream = new GZipStream(sourceStream, CompressionMode.Decompress);
+         zipStream.CopyTo(targetStream);
+      }
+   }
 
-public class ArchiveOptions : Options
-{
-   public CompressionLevel CompressionLevel { get; set; } = CompressionLevel.Optimal;
+   public class ArchiveOptions : Options
+   {
+      public CompressionLevel CompressionLevel { get; set; } = CompressionLevel.Optimal;
+   }
 }
 ```
 
 Next create some classes for serialize json and xml, different converters and parsers. In a word – create!
+
+#### Thanks @fedjaz for the idea of managing json/xml configs and architecture options
 
 
 ## Usage
@@ -153,7 +161,7 @@ dotnet run
 ```
 
 
-#### Hear we go, my congrats! ✨
+#### Here we go, my congrats! ✨
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
