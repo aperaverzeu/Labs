@@ -4,6 +4,26 @@ ETL is a service that monitors some FTP-server and moves files from one site to 
 
 Moving with encryption, compression and saving all the info in database.
 
+## Inner working
+
+### ETL project
+Startup project with the Program only class and Main startup method – initialize Move class object and run the service.
+
+### ETL.Lirbary
+Project with classes describe basic operations with files: Archive, Encryption, Logger, Move, OptionManager.
+
+Move is the most important class in this solution. It montors ftp server via FileSystemWatcher essence and represents moving operation from one ftp server to another, and realize all the functionality of the Library.
+
+OptionManager controlls all the Options, that represent basic configuration settings.
+
+### ETL.Options
+Project with classes describe options for the Library classes: ArchiveOptions, EncryptionOptions, LoggerOptions, MoveOptions, MoveDbOptions, WatcherOptions. They are inherited from the Options base class and controlled by the EtlOptions (with Etl[Json/Xml]Options) that are represent work with json/xml settings files. Also there are classes Converter, Validator, and ParsedObject – they are represent functionality of convertations from json/xml settings essence to values for our solution, validations of this essence and the essence of the parsed object.
+
+### ETL.Db
+Project with classes describe database essence, connection and moving some info to this database. Note is a class describes a row in database and representes all the neccesary columns. NoteContext class inhereted from DbContext and connects to a database and MoveDb class represents method of moving info to the database.
+
+#### Thanks [@fedjaz](https://github.com/fedjaz) for the idea of managing json/xml configs and architecture of options
+
 ## Installation
 
 ### Before the usage make sure that you have installed all the necessary staff.
@@ -145,8 +165,6 @@ namespace YourNamespace
 ```
 
 Next create some classes for serialize json and xml, different converters and parsers. In a word – create!
-
-#### Thanks [@fedjaz](https://github.com/fedjaz) for the idea of managing json/xml configs and architecture options
 
 
 ## Usage
