@@ -146,7 +146,7 @@ namespace YourNamespace
 
 Next create some classes for serialize json and xml, different converters and parsers. In a word – create!
 
-#### Thanks @fedjaz(https://github.com/fedjaz) for the idea of managing json/xml configs and architecture options
+#### Thanks [@fedjaz](https://github.com/fedjaz) for the idea of managing json/xml configs and architecture options
 
 
 ## Usage
