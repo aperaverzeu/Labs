@@ -9,17 +9,24 @@ Moving with encryption, compression and saving all the info in database.
 ### ETL project
 Startup project with the Program only class and Main startup method – initialize Move class object and run the service.
 
-### ETL.Lirbary
-Project with classes describe basic operations with files: Archive, Encryption, Logger, Move, OptionManager.
-Move is the most important class in this solution. It montors ftp server via FileSystemWatcher essence and represents moving operation from one ftp server to another, and realize all the functionality of the Library.
-OptionManager controlls all the Options, that represent basic configuration settings.
+### ETL.Models
+Project with classes decribe instances of the solution. Kinda abstraction in this lab.
 
-### ETL.Options
-Project with classes describe options for the Library classes: ArchiveOptions, EncryptionOptions, LoggerOptions, MoveOptions, MoveDbOptions, WatcherOptions. 
+### ETL.DataAccess
+Project with classes describe Contexts classes for the access to our database. Inherit from DbContext and overriding OnConfiguring() method.
+
+### ETL.DataManager
+Project with classes describe operations with a database. MoveDb class represents method of moving info to or from the database.
+
+### ETL.ConfigManager
+Project with classes describe options: ArchiveOptions, EncryptionOptions, LoggerOptions, MoveOptions, MoveDbOptions, WatcherOptions. 
 They are inherited from the Options base class and controlled by the EtlOptions (with Etl[Json/Xml]Options) that are represent work with json/xml settings files. Also there are classes Converter, Validator, and ParsedObject – they are represent functionality of convertations from json/xml settings essence to values for our solution, validations of this essence and the essence of the parsed object.
 
-### ETL.Db
-Project with classes describe database essence, connection and moving some info to this database. Note is a class describes a row in database and representes all the neccesary columns. NoteContext class inhereted from DbContext and connects to a database and MoveDb class represents method of moving info to the database.
+### ETL.FileManager
+Project with classes describe archiving and encryption file.
+
+### ETL.ServiceManager
+Project with classes describe operation from one FTP server to another and logging operation.
 
 #### Thanks [@fedjaz](https://github.com/fedjaz) for the idea of managing json/xml configs and architecture of options
 
@@ -47,13 +54,13 @@ sudo docker run -e 'SERVER_NAME' -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrongPa
 
 |Parameter                                  |Description|
 |-------------------------------------------|-----------|
-|-e 'SERVER_NAME'                           |MS-SQL Server name of your server             
-|-e "ACCEPT_EULA=Y"                         |Set the ACCEPT_EULA variable to any value to confirm your acceptance of the [End-User Licensing Agreement](https://go.microsoft.com/fwlink/?LinkId=746388). Required setting for the SQL Server image.           |
-|'SA_PASSWORD=yourStrongPassword'           |Specify your own strong password that is at least 8 characters and meets the [SQL Server password requirements](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15). Required setting for the SQL Server image.           |
-|-p 1433:1433                               |Map a TCP port on the host environment (first value) with a TCP port in the container (second value). In this example, SQL Server is listening on TCP 1433 in the container and this is exposed to the port, 1433, on the host.           |
-|--name sql1                                |Specify a custom name for the container rather than a randomly generated one. If you run more than one container, you cannot reuse this same name.                |
-|-h sql1                                    |Used to explicitly set the container hostname, if you don't specify it, it defaults to the container ID which is a randomly generated system GUID.             |
-|microsoft.com/mssql-server-linux           |The SQL Server 2019 Ubuntu Linux container image.           |
+|-e 'SERVER_NAME'                                       |MS-SQL Server name of your server             
+|-e "ACCEPT_EULA=Y"                                  |Set the ACCEPT_EULA variable to any value to confirm your acceptance of the [End-User Licensing Agreement](https://go.microsoft.com/fwlink/?LinkId=746388). Required setting for the SQL Server image.           |
+|'SA_PASSWORD=yourStrongPassword'      |Specify your own strong password that is at least 8 characters and meets the [SQL Server password requirements](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15). Required setting for the SQL Server image.           |
+|-p 1433:1433                                                |Map a TCP port on the host environment (first value) with a TCP port in the container (second value). In this example, SQL Server is listening on TCP 1433 in the container and this is exposed to the port, 1433, on the host.           |
+|--name sql1                                                   |Specify a custom name for the container rather than a randomly generated one. If you run more than one container, you cannot reuse this same name.                |
+|-h sql1                                                            |Used to explicitly set the container hostname, if you don't specify it, it defaults to the container ID which is a randomly generated system GUID.             |
+|microsoft.com/mssql-server-linux              |The SQL Server 2019 Ubuntu Linux container image.           |
 
 To view your Docker containers, use the docker ps command:
 ```bash
@@ -178,7 +185,7 @@ dotnet run
 ```
 
 
-#### Here we go, my congrats! ✨
+#### Here we are, my congrats! ✨
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
