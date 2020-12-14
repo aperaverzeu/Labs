@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ETL.Library\ETL.Library.csproj" />
+      <ProjectReference Include="..\ETL.ServiceManager\ETL.ServiceManager.csproj" />
     </ItemGroup>
 
 </Project>
