@@ -1,0 +1,31 @@
+[03:49:24 14.12.2020] - Failed to load both of json and xml. Using default options and creating appsettings.json
+[03:49:25 14.12.2020] - Run application	
+[03:49:38 14.12.2020] - Key generated
+[03:49:38 14.12.2020] - Created client directory
+[03:49:38 14.12.2020] - Created archive directory
+[03:49:38 14.12.2020] - Create new file path
+[03:49:38 14.12.2020] - Create new file path for archive
+[03:49:38 14.12.2020] - File test40.txt encrypted
+[03:49:38 14.12.2020] - Client directory created
+[03:49:38 14.12.2020] - Archive directory created
+[03:49:38 14.12.2020] - File test40.txt compressed
+[03:49:38 14.12.2020] - File test40.txt compressed to archive
+[03:49:38 14.12.2020] - File test40.txt decompressed
+[03:49:38 14.12.2020] - File test40.txt encrypted!
+[03:49:38 14.12.2020] - File written
+[03:49:40 14.12.2020] - Create Note in Db from test40.txt
+[03:51:11 14.12.2020] - Stop application
+
+
+[03:51:23 14.12.2020] - Json options loaded successfully. 
+[03:51:23 14.12.2020] - Run application	
+[03:51:53 14.12.2020] - Stop application
+
+
+[04:27:23 14.12.2020] - Json options loaded successfully. 
+[04:27:23 14.12.2020] - Run application	
+[04:40:58 14.12.2020] - Json options loaded successfully. 
+[04:40:58 14.12.2020] - Run application	
+[04:46:47 14.12.2020] - Stop application
+
+

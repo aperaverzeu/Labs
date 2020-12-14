@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ETL.ConfigManager\ETL.ConfigManager.csproj" />
+      <ProjectReference Include="..\ETL.DataAccess\ETL.DataAccess.csproj" />
+      <ProjectReference Include="..\ETL.DataManager\ETL.DataManager.csproj" />
+      <ProjectReference Include="..\ETL.FileManager\ETL.FileManager.csproj" />
+    </ItemGroup>
+
+</Project>
