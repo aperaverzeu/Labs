@@ -18,7 +18,12 @@ namespace ETL.ServiceManager
         private static readonly SqlConnectionStringBuilder Builder = new SqlConnectionStringBuilder();
         private static readonly NoteContext NoteContext = new NoteContext(Builder.ConnectionString);
         private static readonly LogContext LogContext = new LogContext(Builder.ConnectionString);
-        private static readonly MoveDb MoveDb = new MoveDb(NoteContext, LogContext);
+        private static readonly ArchiveOptionContext ArchiveOptionContext = new ArchiveOptionContext(Builder.ConnectionString);
+        private static readonly DbConnectionOptionContext DbConnectionOptionContext = new DbConnectionOptionContext(Builder.ConnectionString);
+        private static readonly WatcherOptionContext WatcherOptionContext = new WatcherOptionContext(Builder.ConnectionString);
+        private static readonly MoveDb MoverToDb = new MoveDb(NoteContext);
+        private static readonly MoveLogDb MoverLogsToDb = new MoveLogDb(LogContext);
+        private static readonly MoveOptionsDb MoverOptionsToDb = new MoveOptionsDb(ArchiveOptionContext, DbConnectionOptionContext, WatcherOptionContext);
 
         public void Run()
         {
@@ -26,12 +31,13 @@ namespace ETL.ServiceManager
             
             Console.WriteLine("Run!");
             _logger.Log("Run application\t");
-            MoveDb.CreateLog(MoveDb.GenerateLogId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", "Run application");
+            MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", "Run application");
             Console.WriteLine("Press any key to finish...");
             Console.ReadKey(true);
             _logger.Log("Stop application\n\n");
+            MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", "Stop application");
         }
-
+        
         private void Configuration()
         {
             const string configs = "ETL/Configs";
@@ -46,6 +52,37 @@ namespace ETL.ServiceManager
             _logger = new Logger(options.LoggingOptions);
             _logger.Log(_optionManager.Report);
             
+            
+            try
+            {
+                Builder.DataSource = options.MoveDbOptions.DataSource;
+                Builder.UserID = options.MoveDbOptions.UserID;
+                Builder.Password = options.MoveDbOptions.Password;
+                Builder.InitialCatalog = options.MoveDbOptions.InitialCatalog;
+            }
+            catch(Exception e)
+            {
+                var mess = "Cannot access connection string -- " + e.Message;
+                _logger.Log(mess);
+                return;
+            }
+            try
+            {
+                if (NoteContext._connectionString == "" || LogContext._connectionString == "" || ArchiveOptionContext._connectionString == "" || DbConnectionOptionContext._connectionString == "" || WatcherOptionContext._connectionString == "")
+                {
+                    NoteContext._connectionString = Builder.ConnectionString; 
+                    LogContext._connectionString = Builder.ConnectionString;
+                    ArchiveOptionContext._connectionString = Builder.ConnectionString;
+                    DbConnectionOptionContext._connectionString = Builder.ConnectionString;
+                    WatcherOptionContext._connectionString = Builder.ConnectionString;
+                }
+            }
+            catch (Exception e)
+            {
+                var mess = "Something goes wrong with connection string -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
+            }
             try
             {
                 _watcher = new FileSystemWatcher(options.MoveOptions.SourceDirectory)
@@ -58,33 +95,33 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Watcher goes wrong! -- " + e.Message);
+                var mess = "Watcher goes wrong! -- " + e.Message;
+                _logger.Log(mess);
             }
             try
             {
-                Builder.DataSource = options.MoveDbOptions.DataSource;
-                Builder.UserID = options.MoveDbOptions.UserID;
-                Builder.Password = options.MoveDbOptions.Password;
-                Builder.InitialCatalog = options.MoveDbOptions.InitialCatalog;
-            }
-            catch(Exception e)
-            {
-                _logger.Log("Cannot access connection string -- " + e.Message);
-                return;
-            }
-            try
-            {
-                if (NoteContext._connectionString == "" || LogContext._connectionString == "")
-                {
-                    NoteContext._connectionString = Builder.ConnectionString;
-                    LogContext._connectionString = Builder.ConnectionString;
-                }
+                MoverOptionsToDb.CreateConnectionOption(MoverOptionsToDb.GenerateConnectionId(), 
+                    options.MoveDbOptions.DataSource,
+                    options.MoveDbOptions.UserID,
+                    options.MoveDbOptions.Password,
+                    options.MoveDbOptions.InitialCatalog);
             }
             catch (Exception e)
             {
-                var mess = "Something goes wrong with connection string -- " + e.Message;
+                var mess = "Cannot access an options database! -- " + e.Message;
                 _logger.Log(mess);
-                MoveDb.CreateLog(MoveDb.GenerateLogId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
+            }
+            try
+            {
+                MoverOptionsToDb.CreateWatcherOption(MoverOptionsToDb.GenerateWatcherId(), 
+                    options.WatcherOptions.Filter, 
+                    options.WatcherOptions.IncludeSubdirectories.ToString(), 
+                    options.WatcherOptions.EnableRaisingEvents.ToString());
+            }
+            catch (Exception e)
+            {
+                var mess = "Cannot access an options database! -- " + e.Message;
+                _logger.Log(mess);
             }
         }
 
@@ -99,9 +136,9 @@ namespace ETL.ServiceManager
         {
             byte[] key = {};
             string clientDirectory = "", 
-                archiveDirectory = "", 
-                newFilePath = "", 
-                newArchivePath = "";
+                   archiveDirectory = "", 
+                   newFilePath = "", 
+                   newArchivePath = "";
             try
             {
                 key = Encryption.GenerateKey(16);
@@ -109,7 +146,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Troubles with generating key -- " + e.Message);
+                var mess = "Troubles with generating key -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -118,7 +157,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Cannot create client directory -- " + e.Message);
+                var mess = "Cannot create client directory -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -127,7 +168,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Cannot create archive directory -- " + e.Message);
+                var mess = "Cannot create archive directory -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -136,7 +179,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Unable to create new path for file -- " + e.Message);
+                var mess = "Unable to create new path for file -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -145,7 +190,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Unable to create new archive path for file -- " + e.Message);
+                var mess = "Unable to create new archive path for file -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             
             CreateUniquePath(ref newFilePath);
@@ -163,7 +210,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Encryption failed  -- " + e.Message);
+                var mess = "Encryption failed  -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -172,7 +221,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Client directory cannot create -- " + e.Message);
+                var mess = "Client directory cannot create -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -181,16 +232,22 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("Archive directory cannot create -- " + e.Message);
+                var mess = "Archive directory cannot create -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
                 Archive.Compress(file.FullName, newFilePath, options.ArchiveOptions.CompressionLevel);
                 _logger.Log($"File {file.Name} compressed");
+                
+                MoverOptionsToDb.CreateArchiveOption(MoverOptionsToDb.GenerateArchiveId(), options.ArchiveOptions.CompressionLevel.ToString());
             }
             catch (Exception e)
             {
-                _logger.Log($"Unable to compress file {file.FullName} -- " + e.Message);
+                var mess = $"Unable to compress file {file.FullName} -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -199,7 +256,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log($"Unable to compress file {file.FullName} -- " + e.Message);
+                var mess = $"Unable to compress file {file.FullName} -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -208,7 +267,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log($"Unable to decompress file {file.FullName} -- " + e.Message);
+                var mess = $"Unable to decompress file {file.FullName} -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             File.Delete(newFilePath);
             
@@ -221,7 +282,9 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log($"Cannot decrypt file {file.FullName} -- " + e.Message);
+                var mess = $"Cannot decrypt file {file.FullName} -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             {
@@ -230,16 +293,20 @@ namespace ETL.ServiceManager
             }
             catch (Exception e)
             {
-                _logger.Log("File cannot be written -- " + e.Message);
+                var mess = "File cannot be written -- " + e.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
             try
             { 
-                MoveDb.CreateNote(MoveDb.GenerateId(), file.CreationTime.ToString(CultureInfo.InvariantCulture), text);
+                MoverToDb.CreateNote(MoverToDb.GenerateId(), file.CreationTime.ToString(CultureInfo.InvariantCulture), text);
                 _logger.Log($"Create Note in Db from {file.Name}");
             }
             catch (Exception exception)
             {
-                _logger.Log("Unable to create Note in Db -– " + exception.Message);
+                var mess = "Unable to create Note in Db -– " + exception.Message;
+                _logger.Log(mess);
+                MoverLogsToDb.CreateLog(MoverLogsToDb.GenerateId(), $"{DateTime.Now:hh:mm:ss dd.MM.yyyy}", mess);
             }
         }
 
